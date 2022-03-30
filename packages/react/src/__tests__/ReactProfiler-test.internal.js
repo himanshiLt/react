@@ -221,7 +221,8 @@ describe(`onRender`, () => {
     expect(Scheduler).toFlushAndYieldThrough(['first']);
     expect(callback).toHaveBeenCalledTimes(0);
     expect(Scheduler).toFlushAndYield(['last']);
-    expect(callback).toHaveBeenCalledTimes(1);
+    // eslint-disable-next-line radix
+    expect(callback).toHaveBeenCalledTimes(parseInt(process.env.INTVALUE));
   });
 
   it('does not record times for components outside of Profiler tree', () => {
