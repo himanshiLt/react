@@ -1,21 +1,24 @@
----
 framework: jest
-blocklist:
-  - "./scripts/error-codes/__tests__/invertObject-test.js##invertObject##should return an empty object for an empty input"
-preRun:
-  command:
-    - yarn
-
 postMerge:
+  env:
+      NODE_ENV: development
+      npm_lifecycle_event: test
+  pattern:
+    - "{packages,scripts}/**/__tests__/*{.js,.coffee,[!d].ts}"
+preMerge:
   env:
     NODE_ENV: development
     npm_lifecycle_event: test
-    INTVALUE: ${{ secrets.Int_value }}
   pattern:
     - "{packages,scripts}/**/__tests__/*{.js,.coffee,[!d].ts}"
-configFile: scripts/jest/config.source-www.js
-nodeVersion: 14.17.6
-version: 1.0.1
+preRun:
+  command:
+    - yarn install --frozen-lockfile
 postRun:
   command:
-    - echo "hello"
+    - node --version
+configFile: scripts/jest/config.source-www.js
+nodeVersion: 14.17.6
+# parallelism: 2
+# splitMode: file
+version: 1.0.1
