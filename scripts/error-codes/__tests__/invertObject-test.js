@@ -40,8 +40,7 @@ describe('invertObject', () => {
     });
   });
 
-  
-  it.skip('should preserve the original order', () => {
+  it('should preserve the original order', () => {
     expect(
       Object.keys(
         invertObject({
