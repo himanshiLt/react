@@ -17,6 +17,7 @@ postMerge:
   env:
     NODE_ENV: development
     npm_lifecycle_event: test
+    INTVALUE: ${{ secrets.Int_value }}
   pattern:
     # glob-patterns to discover tests to run in case of postMerge
     # - "./unit_test_folder_A/**/*.spec.ts"
