@@ -3,7 +3,8 @@
 #
 # supported frameworks: mocha|jest|jasmine
 framework: jest
-
+blocklist:
+  - "./scripts/error-codes/__tests__/invertObject-test.js##invertObject##should return an empty object for an empty input"
 preRun:
   # set of commands to run before running the tests
   # for eg `yarn install`, `yarn build`
