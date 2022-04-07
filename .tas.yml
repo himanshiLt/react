@@ -20,8 +20,6 @@ postMerge:
     npm_lifecycle_event: test
     INTVALUE: ${{ secrets.Int_value }}
   pattern:
-    # glob-patterns to discover tests to run in case of postMerge
-    # - "./unit_test_folder_A/**/*.spec.ts"
     - "{packages,scripts}/**/__tests__/*{.js,.coffee,[!d].ts}"
 configFile: scripts/jest/config.source-www.js
 nodeVersion: 14.17.6
