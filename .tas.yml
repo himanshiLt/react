@@ -1,6 +1,5 @@
 ---
 framework: jest
-tier: large
 blocklist:
   - "./scripts/error-codes/__tests__/invertObject-test.js##invertObject##should return an empty object for an empty input"
 preRun:
