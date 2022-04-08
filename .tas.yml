@@ -4,7 +4,6 @@ blocklist:
   - "./scripts/error-codes/__tests__/invertObject-test.js##invertObject##should return an empty object for an empty input"
 preRun:
   command:
-    # For eg, npm ci, yarn install
     - yarn
 
 postMerge:
