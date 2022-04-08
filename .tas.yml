@@ -11,7 +11,6 @@ preRun:
 
 >>>>>>> Update .tas.yml
 postMerge:
-  # glob-pattern for identifying the test files
   env:
       NODE_ENV: development
       npm_lifecycle_event: test
