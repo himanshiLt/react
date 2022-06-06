@@ -1,14 +1,5 @@
 ---
 framework: jest
-<<<<<<< HEAD
-=======
-blocklist:
-  - "./scripts/error-codes/__tests__/invertObject-test.js##invertObject##should return an empty object for an empty input"
-preRun:
-  command:
-    - yarn
-
->>>>>>> Update .tas.yml
 postMerge:
   env:
       NODE_ENV: development
