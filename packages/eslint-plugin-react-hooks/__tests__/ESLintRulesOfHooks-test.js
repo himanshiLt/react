@@ -449,7 +449,7 @@ const tests = {
     },
     {
       code: `
-        // This is a false positive (it's valid) that unfortunately 
+        // This is a false positive (it's valid) that unfortunately
         // we cannot avoid. Prefer to rename it to not start with "use"
         class Foo extends Component {
           render() {
