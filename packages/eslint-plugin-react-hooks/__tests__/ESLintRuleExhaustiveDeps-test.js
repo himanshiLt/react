@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Facebook,  Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -1630,7 +1630,7 @@ const tests = {
                     }, 1000);
                     return () => clearInterval(id);
                   }, [setCount]);
-        
+
                   return <h1>{count}</h1>;
                 }
               `,
