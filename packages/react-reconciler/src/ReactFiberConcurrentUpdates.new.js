@@ -31,6 +31,7 @@ import {
 } from './ReactFiberLane.new';
 import {NoFlags, Placement, Hydrating} from './ReactFiberFlags';
 import {HostRoot, OffscreenComponent} from './ReactWorkTags';
+import {OffscreenVisible} from './ReactFiberOffscreenComponent';
 
 export type ConcurrentUpdate = {
   next: ConcurrentUpdate,
@@ -166,8 +167,14 @@ export function unsafe_markUpdateLaneFromFiberToRoot(
   sourceFiber: Fiber,
   lane: Lane,
 ): FiberRoot | null {
+  // NOTE: For Hyrum's Law reasons, if an infinite update loop is detected, it
+  // should throw before `markUpdateLaneFromFiberToRoot` is called. But this is
+  // undefined behavior and we can change it if we need to; it just so happens
+  // that, at the time of this writing, there's an internal product test that
+  // happens to rely on this.
+  const root = getRootForUpdatedFiber(sourceFiber);
   markUpdateLaneFromFiberToRoot(sourceFiber, null, lane);
-  return getRootForUpdatedFiber(sourceFiber);
+  return root;
 }
 
 function markUpdateLaneFromFiberToRoot(
@@ -211,7 +218,10 @@ function markUpdateLaneFromFiberToRoot(
       // account for it. (There may be other cases that we haven't discovered,
       // too.)
       const offscreenInstance: OffscreenInstance | null = parent.stateNode;
-      if (offscreenInstance !== null && offscreenInstance.isHidden) {
+      if (
+        offscreenInstance !== null &&
+        !(offscreenInstance.visibility & OffscreenVisible)
+      ) {
         isHidden = true;
       }
     }

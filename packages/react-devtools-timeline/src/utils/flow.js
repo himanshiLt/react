@@ -6,11 +6,8 @@
  *
  * @flow
  */
+import type {SchedulingEvent} from '../types';
 
-export {
-  renderToString,
-  renderToStaticMarkup,
-  renderToNodeStream,
-  renderToStaticNodeStream,
-  version,
-} from './ReactDOMServerLegacyPartialRendererBrowser';
+export function isStateUpdateEvent(event: SchedulingEvent): boolean %checks {
+  return event.type === 'schedule-state-update';
+}
